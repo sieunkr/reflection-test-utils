@@ -16,7 +16,7 @@ public class CoffeeRepository {
     private final HashMap<String, Coffee> coffeeHashMap = new HashMap<>();
 
     @PostConstruct
-    private void init(){
+    public void init() {
         coffeeHashMap.put("mocha", Coffee.builder().name("mocha").milk(true).price(1700).build());
         coffeeHashMap.put("latte", Coffee.builder().name("latte").milk(true).price(1500).build());
         coffeeHashMap.put("americano", Coffee.builder().name("americano").milk(false).price(900).build());
@@ -25,7 +25,7 @@ public class CoffeeRepository {
         coffeeHashMap.put("affogato", Coffee.builder().name("affogato").milk(false).price(2300).build());
     }
 
-    public List<Coffee> findAllOrderByPrice(){
+    public List<Coffee> findAllOrderByPrice() {
         ArrayList<Coffee> coffeeArrayList = new ArrayList<>(coffeeHashMap.values());
 
         coffeeArrayList.sort(Comparator.comparing(Coffee::getPrice));
@@ -33,7 +33,7 @@ public class CoffeeRepository {
         return coffeeArrayList;
     }
 
-    public Coffee findByName(String name){
+    public Coffee findByName(String name) {
 
         log.info(Thread.currentThread().getName());
 

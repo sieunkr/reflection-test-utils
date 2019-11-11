@@ -16,28 +16,26 @@ import static org.junit.Assert.*;
 public class CoffeeTest {
 
     @Test
-    public void 필드명_테스트(){
+    public void 필드명_복수_테스트() {
         Object coffee = new Coffee();
         Field[] fields = coffee.getClass().getDeclaredFields();
 
         List<String> actualFieldNameList = getFieldNames(fields);
 
         assertTrue(Arrays.asList("name", "price").containsAll(actualFieldNameList));
+    }
 
+    @Test
+    public void 필드명_단수_테스트() throws NoSuchFieldException {
 
-        try {
-            Field field = coffee.getClass().getDeclaredField("price");
-
-            assertEquals("price", field.getName());
-
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
+        Object coffee = new Coffee();
+        Field field = coffee.getClass().getDeclaredField("price");
+        assertEquals("price", field.getName());
     }
 
 
     @Test
-    public void 필드명_테스트_02(){
+    public void 필드명_테스트_02() {
 
         Class<?> clazz = null;
         try {
@@ -49,7 +47,7 @@ public class CoffeeTest {
 
         try {
             Constructor<?> constructor = clazz.getConstructor(String.class, int.class);
-            Coffee coffee = (Coffee)constructor.newInstance("라떼", 1200);
+            Coffee coffee = (Coffee) constructor.newInstance("라떼", 1200);
             try {
                 Field field = clazz.getDeclaredField("price");
 
@@ -67,7 +65,7 @@ public class CoffeeTest {
 
 
     @Test
-    public void 클래스_이름(){
+    public void 클래스_이름() {
 
         Class<?> clazz = null;
         try {
@@ -84,7 +82,7 @@ public class CoffeeTest {
 
 
     @Test
-    public void 패키지(){
+    public void 패키지() {
 
         Class<?> clazz = null;
         try {
@@ -98,7 +96,7 @@ public class CoffeeTest {
 
 
     @Test
-    public void 인터페이스(){
+    public void 인터페이스() {
 
         Class<?> clazz = null;
         try {
@@ -114,9 +112,8 @@ public class CoffeeTest {
     }
 
 
-
     @Test
-    public void 생성자(){
+    public void 생성자() {
 
         Class<?> clazz = null;
         try {
@@ -134,14 +131,14 @@ public class CoffeeTest {
 
 
     @Test
-    public void 생성자_조회(){
+    public void 생성자_조회() {
 
         Class<?> clazz = null;
         try {
             clazz = Class.forName("com.example.demo.Coffee");
             Constructor<?> constructor = clazz.getConstructor(String.class, int.class);
 
-            Coffee coffee = (Coffee)constructor.newInstance("라떼", 1200);
+            Coffee coffee = (Coffee) constructor.newInstance("라떼", 1200);
 
             assertEquals("라떼", coffee.getName());
             assertEquals(1200, coffee.getPrice());
@@ -153,7 +150,7 @@ public class CoffeeTest {
 
 
     @Test
-    public void 메서드(){
+    public void 메서드() {
 
         Class<?> clazz = null;
         try {
@@ -170,7 +167,7 @@ public class CoffeeTest {
 
 
     @Test
-    public void 메서드_private(){
+    public void 메서드_private() {
 
         Class<?> clazz = null;
         try {
